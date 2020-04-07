@@ -16,10 +16,12 @@ namespace CSC200_SPR2020_ConsoleApp
         /// <returns>Square root of number</returns>
         public static double SquareRoot(double value)
         {
+            // if value less than zero result is not a number
             if (value < 0.0)
-                throw new ArgumentOutOfRangeException("value");
-
-            if (value == 0)
+                return double.NaN;
+            
+            // compares absolute value of input is less than smallest double greater that 0
+            if (Math.Abs(value) < double.Epsilon)
                 return 0;
 
             double root = value / 3;

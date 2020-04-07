@@ -7,15 +7,19 @@ namespace CSC200_SPR2020_UnitTests
     [TestClass]
     public class SquareRootUnitTest
     {
-        // Test square of negative is out of bounds
+        // Test square of negative is not a number
         [TestMethod]
-        public void SquareRootOfNegativeShouldBeArgumentOutRange()
+        public void SquareRootOfNegativeShouldBeNaN()
         {
-            // arrange 
-            double input = -1;
+            // Arrange 
+            const double expected = double.NaN;
+            const double input = -1;
+            
+            // Act
+            double result = Program.SquareRoot(input);
 
-            // Assert that action delegate throws exception
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => { Program.SquareRoot(input); });
+            // Assert 
+            Assert.AreEqual(expected, result);
         }
 
         // Test square root of 0 equals 0
@@ -62,7 +66,7 @@ namespace CSC200_SPR2020_UnitTests
             // assert
             Assert.AreEqual(expected, result);
         }
-
+        
         // Test square root of 9 equals 3
         [TestMethod]
         public void SquareRootOfNineShouldBeThree()
